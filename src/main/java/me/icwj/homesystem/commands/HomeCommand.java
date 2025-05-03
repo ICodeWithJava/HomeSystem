@@ -22,7 +22,7 @@ public class HomeCommand implements CommandExecutor {
             return true;
         }
 
-        player.sendMessage(Component.text(plugin.PREFIX + "Test!"));
+        player.sendMessage(Component.text(plugin.pluginPrefix + "Test!"));
 
         return false;
     }

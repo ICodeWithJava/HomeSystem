@@ -19,7 +19,7 @@ public class HomeSystem extends JavaPlugin {
 
     private final Database database = new Database();
     private DataSource dataSource;
-    public final String PREFIX = getConfig().getString("General.Prefix");
+    public final String pluginPrefix = getConfig().getString("General.Prefix");
 
     @Override
     public void onLoad() {
