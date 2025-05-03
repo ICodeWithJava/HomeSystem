@@ -19,7 +19,6 @@ public class HomeSystem extends JavaPlugin {
 
     private final Database database = new Database();
     private DataSource dataSource;
-    public final String pluginPrefix = getConfig().getString("General.Prefix");
 
     @Override
     public void onLoad() {
@@ -86,7 +85,7 @@ public class HomeSystem extends JavaPlugin {
     }
 
     private void registerEvents() {
-        Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand(this));
+        Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand());
     }
 
     public static HomeSystem getInstance() {

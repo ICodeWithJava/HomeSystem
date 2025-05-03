@@ -11,4 +11,5 @@ Database:
 
 # Generelle Konfiguration
 General:
-  Prefix: "§8[§3Home§8] §7"
+  Prefix: '<gray>[<aqua>Home<gray>] <reset>'
+  SenderIsConsole: 'Du musst ein Spieler sein, um diesen Befehl zu verwenden.'
