@@ -16,8 +16,10 @@ import java.util.Objects;
 public class HomeSystem extends JavaPlugin {
 
     private static HomeSystem instance;
+
     private final Database database = new Database();
     private DataSource dataSource;
+    public final String PREFIX = getConfig().getString("General.Prefix");
 
     @Override
     public void onLoad() {
@@ -38,7 +40,7 @@ public class HomeSystem extends JavaPlugin {
         try {
             loadConfig();
             connectDatabase();
-            registerComponents();
+            registerEvents();
 
             getComponentLogger().info(Component.text("Das Plugin wurde erfolgreich geladen!", NamedTextColor.GREEN));
         } catch (Exception exception) {
@@ -83,8 +85,8 @@ public class HomeSystem extends JavaPlugin {
         }
     }
 
-    private void registerComponents() {
-        Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand());
+    private void registerEvents() {
+        Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand(this));
     }
 
     public static HomeSystem getInstance() {
