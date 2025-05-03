@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HomeSystem">
+    <output-path>$USER_HOME$/Desktop/localhost/plugins</output-path>
+    <root id="archive" name="HomeSystem.jar">
+      <element id="module-output" name="HomeSystem" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,14 @@
+# HomeSystem Konfiguration
+
+# Datenbank Daten
+Database:
+  Host: 'Host'
+  Port: 3306
+  Database: 'Database'
+  Username: 'Username'
+  Password: 'Password'
+  MaximumConnectionPoolSize: 2
+
+# Generelle Konfiguration
+General:
+  Prefix: "§8[§3Home§8] §7"
