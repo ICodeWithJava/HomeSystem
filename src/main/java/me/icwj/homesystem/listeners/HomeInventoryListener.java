@@ -59,6 +59,34 @@ public class HomeInventoryListener implements Listener {
                 break;
             case RED_BED:
                 player.closeInventory();
+
+                if (!clickedItem.hasItemMeta()) {
+                    return;
+                }
+
+                final Component displayNameComponent = clickedItem.getItemMeta().displayName();
+
+                if (displayNameComponent == null) {
+                    return;
+                }
+
+                final String homeName = PlainTextComponentSerializer.plainText()
+                        .serialize(displayNameComponent)
+                        .replaceAll("§.", "");
+
+                player.sendMessage(homeName);
+
+                if (inventoryClickEvent.isLeftClick()) {
+                    player.sendMessage("TODO");
+                } else if (inventoryClickEvent.isRightClick()) {
+                    try {
+                        homeManager.deleteHome(player, homeName);
+
+                        player.sendMessage(ConfigMessages.PLUGIN_PREFIX.append(Component.text(String.format("§7Home-Punkt §7'§3%s§7' wurde erfolgreich §cgelöscht§7.", homeName))));
+                    } catch (SQLException exception) {
+                        player.sendMessage(ConfigMessages.PLUGIN_PREFIX.append(Component.text(String.format("§cFehler §7beim Löschen des Home-Punkts §7'§3%s§7'. Bitte versuche es §cerneut§7.", homeName))));
+                    }
+                }
                 break;
         }
     }
