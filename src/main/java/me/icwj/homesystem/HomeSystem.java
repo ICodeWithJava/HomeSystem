@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+import java.util.Optional;
 
 public class HomeSystem extends JavaPlugin {
 
@@ -89,7 +90,8 @@ public class HomeSystem extends JavaPlugin {
     private void registerEvents() {
         final PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new HomeInventoryListener(), this);
-        Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand());
+
+        Optional.ofNullable(getCommand("Home")).ifPresent(command -> command.setExecutor(new HomeCommand()));
     }
 
     public static HomeSystem getInstance() {
