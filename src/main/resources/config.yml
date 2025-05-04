@@ -11,7 +11,7 @@ Database:
 
 # Generelle Konfiguration
 General:
-  Prefix: '<color:#00EAF0><bold>HOMES</bold> <white>•<reset>'
+  Prefix: '<color:#00EAF0><bold>HOMES</bold> <white>• <reset>'
   SenderIsConsole: 'Du musst ein Spieler sein, um diesen Befehl zu verwenden.'
 
 # Inventar Konfiguration

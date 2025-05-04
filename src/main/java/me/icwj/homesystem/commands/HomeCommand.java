@@ -38,10 +38,12 @@ public class HomeCommand implements CommandExecutor {
                 .setDisplayName(Component.text("§3Homes"))
                 .setLore(homes.isEmpty() ? "§8➥ §cDu hast zurzeit keine Home-Punkte gesetzt." : String.format("§8➥ §7Du hast zurzeit §3%s §7Home-Punkte gesetzt.", homes.size()))
                 .build());
-        homeInventory.setItem(49, new ItemBuilder(Material.BUCKET, 1)
-                .setDisplayName(Component.text("§4§lAlle Home-Punkte Löschen"))
-                .setLore("§8➥ §7Klicke §4hier§7, um alle Home-Punkte zu löschen.")
-                .build());
+        if (!(homes.isEmpty())) {
+            homeInventory.setItem(49, new ItemBuilder(Material.BUCKET, 1)
+                    .setDisplayName(Component.text("§4§lAlle Home-Punkte Löschen"))
+                    .setLore("§8➥ §7Klicke §4hier§7, um alle Home-Punkte zu löschen.")
+                    .build());
+        }
 
         for (String home : homes) {
             homeInventory.addItem(new ItemBuilder(Material.RED_BED, 1)

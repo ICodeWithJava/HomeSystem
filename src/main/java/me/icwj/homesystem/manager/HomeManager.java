@@ -60,4 +60,11 @@ public class HomeManager {
         }
         return homes;
     }
+
+    public void deleteAllHomes(final Player player) throws SQLException {
+        try (final Connection connection = dataSource.getConnection(); final PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM homes WHERE player_user_id = ?")) {
+            preparedStatement.setString(1, player.getUniqueId().toString());
+            preparedStatement.executeUpdate();
+        }
+    }
 }
