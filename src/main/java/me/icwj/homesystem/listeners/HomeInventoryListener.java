@@ -74,8 +74,6 @@ public class HomeInventoryListener implements Listener {
                         .serialize(displayNameComponent)
                         .replaceAll("§.", "");
 
-                player.sendMessage(homeName);
-
                 if (inventoryClickEvent.isLeftClick()) {
                     player.sendMessage("TODO");
                 } else if (inventoryClickEvent.isRightClick()) {
