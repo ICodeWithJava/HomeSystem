@@ -10,4 +10,5 @@ public class ConfigMessages {
 
     public static final Component PLUGIN_PREFIX = MiniMessage.miniMessage().deserialize(Objects.requireNonNull(HomeSystem.getInstance().getConfig().getString("General.Prefix")));
     public static final Component SENDER_IS_CONSOLE = MiniMessage.miniMessage().deserialize(Objects.requireNonNull(HomeSystem.getInstance().getConfig().getString("General.SenderIsConsole")));
+    public static final Component INVENTORY_TITLE = MiniMessage.miniMessage().deserialize(Objects.requireNonNull(HomeSystem.getInstance().getConfig().getString("Inventory.Title")));
 }

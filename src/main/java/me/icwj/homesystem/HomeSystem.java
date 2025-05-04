@@ -4,10 +4,12 @@ import me.icwj.homesystem.commands.HomeCommand;
 import me.icwj.homesystem.database.Credentials;
 import me.icwj.homesystem.database.Database;
 import me.icwj.homesystem.exceptions.InvalidDatabaseCredentialsException;
+import me.icwj.homesystem.listeners.HomeInventoryListener;
 import me.icwj.homesystem.manager.HomeManager;
 import me.icwj.homesystem.utilities.CredentialValidator;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.sql.DataSource;
@@ -85,6 +87,8 @@ public class HomeSystem extends JavaPlugin {
     }
 
     private void registerEvents() {
+        final PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new HomeInventoryListener(), this);
         Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand());
     }
 

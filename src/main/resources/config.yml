@@ -13,3 +13,7 @@ Database:
 General:
   Prefix: '<gray>[<aqua>Home<gray>] <reset>'
   SenderIsConsole: 'Du musst ein Spieler sein, um diesen Befehl zu verwenden.'
+
+# Inventar Konfiguration
+Inventory:
+  Title: '<gray>Homes'
