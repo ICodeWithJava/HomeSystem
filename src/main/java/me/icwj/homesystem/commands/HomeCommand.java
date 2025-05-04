@@ -22,7 +22,7 @@ public class HomeCommand implements CommandExecutor {
     private final HomeManager homeManager = new HomeManager();
     private final InventoryBuilder inventoryBuilder = new InventoryBuilder();
 
-    private void openGUI(final Player player) {
+    private void openHomes(final Player player) {
         final Inventory homeInventory = Bukkit.createInventory(null, 9 * 6, ConfigMessages.INVENTORY_TITLE);
 
         inventoryBuilder.buildInventory(homeInventory);
@@ -51,7 +51,7 @@ public class HomeCommand implements CommandExecutor {
             return true;
         }
 
-        openGUI(player);
+        openHomes(player);
 
         return false;
     }
