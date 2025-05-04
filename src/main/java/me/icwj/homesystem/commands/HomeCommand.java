@@ -5,6 +5,7 @@ import me.icwj.homesystem.utilities.ConfigMessages;
 import me.icwj.homesystem.utilities.InventoryBuilder;
 import me.icwj.homesystem.utilities.ItemBuilder;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -13,6 +14,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class HomeCommand implements CommandExecutor {
 
@@ -24,9 +27,16 @@ public class HomeCommand implements CommandExecutor {
 
         inventoryBuilder.buildInventory(homeInventory);
 
-        homeInventory.setItem(4, new ItemBuilder(Material.BOOK, 1).setDisplayName(Component.text("Homes:")).setLore("- " + homeManager.getAllHomes(player).size()).build());
+        final List<String> homes = homeManager.getAllHomes(player);
 
-        for (String home : homeManager.getAllHomes(player)) {
+        if (homes == null) {
+            player.sendMessage(ConfigMessages.PLUGIN_PREFIX.append(Component.text("Beim Laden deiner Homes ist ein Fehler aufgetreten.", NamedTextColor.RED)));
+            return;
+        }
+
+        homeInventory.setItem(4, new ItemBuilder(Material.BOOK, 1).setDisplayName(Component.text("Homes:")).setLore(homes.isEmpty() ? "Du hast keine Home Punkte gesetzt" : "- " + homes.size()).build());
+
+        for (String home : homes) {
             homeInventory.addItem(new ItemBuilder(Material.RED_BED, 1).setDisplayName(Component.text(home)).setLore("- Linksklick zum Teleportieren", "- Rechtsklick zum Löschen").build());
         }
 
