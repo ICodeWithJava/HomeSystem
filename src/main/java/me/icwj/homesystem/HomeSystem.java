@@ -5,7 +5,6 @@ import me.icwj.homesystem.database.Credentials;
 import me.icwj.homesystem.database.Database;
 import me.icwj.homesystem.exceptions.InvalidDatabaseCredentialsException;
 import me.icwj.homesystem.listeners.HomeInventoryListener;
-import me.icwj.homesystem.manager.HomeManager;
 import me.icwj.homesystem.utilities.CredentialValidator;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -73,7 +72,6 @@ public class HomeSystem extends JavaPlugin {
         try {
             dataSource = Database.createDataSource(new Credentials(host, port, database, username, password, maximumConnectionPoolSize));
             this.database.createTable();
-            new HomeManager(dataSource);
 
             getComponentLogger().info(
                     Component.text("Erfolgreich mit der Datenbank verbunden!", NamedTextColor.GREEN)

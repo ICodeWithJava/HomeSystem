@@ -1,5 +1,8 @@
 package me.icwj.homesystem.manager;
 
+import me.icwj.homesystem.HomeSystem;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -13,11 +16,7 @@ import java.util.List;
 
 public class HomeManager {
 
-    private final DataSource dataSource;
-
-    public HomeManager(final DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    private final DataSource dataSource = HomeSystem.getInstance().getDataSource();
 
     public void createHome(final Player player, final String homeName) throws SQLException {
         try (final Connection connection = dataSource.getConnection();
@@ -41,7 +40,7 @@ public class HomeManager {
         return null;
     }
 
-    public List<String> getAllHomes(final Player player) throws SQLException {
+    public List<String> getAllHomes(final Player player) {
         final List<String> homes = new ArrayList<>();
 
         try (final Connection connection = dataSource.getConnection();
@@ -53,6 +52,11 @@ public class HomeManager {
                     homes.add(resultSet.getString("home_name"));
                 }
             }
+        } catch (SQLException exception) {
+            HomeSystem.getInstance().getComponentLogger().error(
+                    Component.text("Fehler beim Abrufen aller Homes aus der Datenbank.", NamedTextColor.RED)
+                            .append(Component.text(" Spieler: " + player.getName() + " (" + player.getUniqueId() + ")", NamedTextColor.GRAY))
+            );
         }
         return homes;
     }
