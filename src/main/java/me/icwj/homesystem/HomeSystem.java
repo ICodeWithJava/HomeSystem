@@ -13,7 +13,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.sql.DataSource;
-import java.util.Objects;
 import java.util.Optional;
 
 public class HomeSystem extends JavaPlugin {
