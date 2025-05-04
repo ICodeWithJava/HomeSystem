@@ -35,6 +35,7 @@ public class HomeCommand implements CommandExecutor {
         }
 
         homeInventory.setItem(4, new ItemBuilder(Material.BOOK, 1).setDisplayName(Component.text("Homes:")).setLore(homes.isEmpty() ? "Du hast keine Home Punkte gesetzt" : "- " + homes.size()).build());
+        homeInventory.setItem(49, new ItemBuilder(Material.BUCKET, 1).setDisplayName(Component.text("Lösche alle Homes")).build());
 
         for (String home : homes) {
             homeInventory.addItem(new ItemBuilder(Material.RED_BED, 1).setDisplayName(Component.text(home)).setLore("- Linksklick zum Teleportieren", "- Rechtsklick zum Löschen").build());

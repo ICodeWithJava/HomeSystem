@@ -38,11 +38,16 @@ public class HomeSystem extends JavaPlugin {
 
     private void initializePlugin() {
         try {
+            final long startTime = System.currentTimeMillis();
+
             loadConfig();
             connectDatabase();
             registerEvents();
 
-            getComponentLogger().info(Component.text("Das Plugin wurde erfolgreich geladen!", NamedTextColor.GREEN));
+            final long endTime = System.currentTimeMillis();
+            final long totalTime = endTime - startTime;
+
+            getComponentLogger().info(Component.text(String.format("Das Plugin wurde erfolgreich in %s ms geladen!", totalTime), NamedTextColor.GREEN));
         } catch (Exception exception) {
             getComponentLogger().error(
                     Component.text("Fehler beim Laden des Plugins: ", NamedTextColor.RED)
