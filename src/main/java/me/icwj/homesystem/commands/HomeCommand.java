@@ -38,6 +38,7 @@ public class HomeCommand implements CommandExecutor {
                 .setDisplayName(Component.text("§3Homes"))
                 .setLore(homes.isEmpty() ? "§8➥ §cDu hast zurzeit keine Home-Punkte gesetzt." : String.format("§8➥ §7Du hast zurzeit §3%s §7Home-Punkte gesetzt.", homes.size()))
                 .build());
+
         if (!(homes.isEmpty())) {
             homeInventory.setItem(49, new ItemBuilder(Material.BUCKET, 1)
                     .setDisplayName(Component.text("§4§lAlle Home-Punkte Löschen"))
